@@ -6,7 +6,8 @@ Example of running solver with visualizatoin
 go run . -task "solve" -v 1 -file_path examples/sudoku_difficult.txt
 ```
 which should give ytou something like
-![Alt Text](resources/solve.gif)
+
+<img src="resources/solve.gif" width="100" height="100" />
 
 ## Generator
 Example of running generator
