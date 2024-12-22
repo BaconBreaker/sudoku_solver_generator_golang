@@ -69,10 +69,10 @@ func main() {
 				err := os.WriteFile(save_path, []byte(solution_str), 0644)
 				if err != nil {
 					panic(err)
+				} else {
+					fmt.Println("Unique solution with the following values")
+					fmt.Println(solution_str)
 				}
-			} else {
-				fmt.Println("Unique solution with the following values")
-				fmt.Println(solution_str)
 			}
 		} else {
 			fmt.Printf("%d solutions found. Heres the list.\n", len(solutions))
