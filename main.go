@@ -63,7 +63,6 @@ func main() {
 		if len(solutions) == 0 {
 			fmt.Println("No solutions were found")
 		} else if len(solutions) == 1 {
-			fmt.Println("Unique solution with the following values")
 			var solution_str string = convert_sudoku_to_string(solutions[0])
 			if save_path == "" {
 				// write the whole body at once
@@ -71,8 +70,10 @@ func main() {
 				if err != nil {
 					panic(err)
 				}
+			} else {
+				fmt.Println("Unique solution with the following values")
+				fmt.Println(solution_str)
 			}
-			fmt.Println(solution_str)
 		} else {
 			fmt.Printf("%d solutions found. Heres the list.\n", len(solutions))
 			for _, sol_board := range solutions {
