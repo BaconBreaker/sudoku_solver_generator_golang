@@ -1,4 +1,4 @@
-package sudoku_tools
+package main
 
 import "math/rand"
 
