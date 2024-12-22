@@ -64,7 +64,7 @@ func main() {
 			fmt.Println("No solutions were found")
 		} else if len(solutions) == 1 {
 			var solution_str string = convert_sudoku_to_string(solutions[0])
-			if save_path == "" {
+			if save_path != "" {
 				// write the whole body at once
 				err := os.WriteFile(save_path, []byte(solution_str), 0644)
 				if err != nil {
