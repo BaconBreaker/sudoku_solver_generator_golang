@@ -1,5 +1,7 @@
 # sudoku_solver_generator_golang
 
+This was my first time coding in go, it does not utilize any goroutines but i still learned the go syntax and types, as well as testing in go.
+
 ## Solver
 Example of running solver with visualizatoin
 ```console
