@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 )
 
 func main() {
@@ -10,6 +11,7 @@ func main() {
 	var file_path string
 	var task string
 	var n_filled_cells int
+	var save_path string
 
 	flag.IntVar(&verbose, "v", 0, "verbosity level. value must be 0 or 1")
 	flag.StringVar(
@@ -25,6 +27,7 @@ func main() {
 		"Which task to solve. Can be either 'generate' or 'solve'",
 	)
 	flag.IntVar(&n_filled_cells, "n_filled_cells", 30, "number of filled cells in generated sudoku puzzle")
+	flag.StringVar(&save_path, "save_path", "", "save solution(s) or puzzle to this file")
 
 	flag.Parse()
 
@@ -62,6 +65,13 @@ func main() {
 		} else if len(solutions) == 1 {
 			fmt.Println("Unique solution with the following values")
 			var solution_str string = convert_sudoku_to_string(solutions[0])
+			if save_path == "" {
+				// write the whole body at once
+				err := os.WriteFile(save_path, []byte(solution_str), 0644)
+				if err != nil {
+					panic(err)
+				}
+			}
 			fmt.Println(solution_str)
 		} else {
 			fmt.Printf("%d solutions found. Heres the list.\n", len(solutions))
@@ -75,7 +85,15 @@ func main() {
 	if task == "generate" {
 		board := generate_sudoku_puzzle(n_filled_cells)
 		board_str := convert_sudoku_to_string(board)
-		fmt.Println("generated the following sudoku")
-		fmt.Println(board_str)
+		if save_path == "" {
+			fmt.Println("generated the following sudoku")
+			fmt.Println(board_str)
+		} else {
+			// write the whole body at once
+			err := os.WriteFile(save_path, []byte(board_str), 0644)
+			if err != nil {
+				panic(err)
+			}
+		}
 	}
 }
